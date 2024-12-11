@@ -1,0 +1,110 @@
+@import '$lib/scss/_mixins.scss';
+
+@mixin base-theme {
+	// Primary colors
+	@include define-color('primary', #90CEAA);  // Main primary color
+	@include define-color('primary-shade', #5E8F6E);  // Darker shade
+	@include define-color('primary-tint', #D8F2E4);  // Lighter tint
+
+	// Secondary colors
+	@include define-color('secondary', #F4A261);  // Warm complementary
+	@include define-color('secondary-shade', #A3643E);  // Darker shade
+	@include define-color('secondary-tint', #FBD2A4);  // Lighter tint
+
+	// Accent color
+	@include define-color('yellow', #FFD166);  // Soft yellow for attention-grabbing
+
+	// Text colors
+	@include define-color('text', #1C1E26);  // Main text
+	@include define-color('text-shade', #5D5F65);  // Muted text
+	@include define-color('text-inverse', #FFFFFF);  // Inverse text
+	@include define-color('text-inverse-shade', #9EB4B5);  // Subtle inverse
+
+	// Background colors
+	@include define-color('page-background', #F4F8FB);  // Main background
+	@include define-color('post-page-background', #F3FBFC);  // Slightly darker for content
+	@include define-color('card-background', #FFFFFF);  // Card background
+
+	// Callout component
+	@include define-color('callout-background', #F4F8FB);  // Neutral light background
+	@include define-color('callout-background--info', #D8EFFF);  // Info callout background
+	@include define-color('callout-accent--info', #5DA7F7);  // Info accent
+	@include define-color('callout-background--warning', #FFF7D9);  // Warning background
+	@include define-color('callout-accent--warning', #E39C3B);  // Warning accent
+	@include define-color('callout-background--error', #FFE8E8);  // Error background
+	@include define-color('callout-accent--error', #F75C5C);  // Error accent
+	@include define-color('callout-background--success', #E9F9EF);  // Success background
+	@include define-color('callout-accent--success', #68C99D);  // Success accent
+
+	// Code block component
+	@include define-color('code-background', #F4F8FB);  // Light code block background
+	@include define-color('code-text', #1C1E26);  // Dark text for code
+	@include define-color('code-inline-background', #E3E3E3);  // Inline code background
+
+	--color--waves-start: rgba(var(--color--primary-rgb), 0.3);
+	--color--waves-end: rgba(var(--color--primary-rgb), 0.1);
+
+	--card-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+	--card-shadow-hover: 0px 4px 10px 8px rgb(0 0 0 / 10%);
+	--image-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06), 1px 3px 8px rgba(39, 44, 49, 0.03);
+}
+
+
+@mixin dark-theme {
+	// Primary colors (Soft Green Tone)
+	@include define-color('primary', #90CEAA);  // Main primary color
+	@include define-color('primary-shade', #54876B);  // Darker shade for contrast
+	@include define-color('primary-tint', #BFE4D3);  // Lighter tint for highlights
+
+	// Secondary colors (Complementary Soft Orange)
+	@include define-color('secondary', #F4A261);  // Warm contrast
+	@include define-color('secondary-shade', #A3643E);  // Darker shade
+	@include define-color('secondary-tint', #FBD2A4);  // Lighter tint
+
+	// Accent color (Soft Yellow)
+	@include define-color('yellow', #FFD166);  // Attention-grabbing
+
+	// Text Colors
+	@include define-color('text', #EAEAEA);  // Main text (light gray)
+	@include define-color('text-shade', #B1B1B1);  // Muted text
+	@include define-color('text-inverse', #121212);  // Dark background contrast
+	@include define-color('text-inverse-shade', #5D5F65);  // Subtle inverse shade
+
+	// Background Colors
+	@include define-color('page-background', #121212);  // Main background
+	@include define-color('post-page-background', #181A1B);  // Darker for content areas
+	@include define-color('card-background', #24282A);  // Cards background
+
+	// Callout Backgrounds & Accents
+	@include define-color('callout-background', #181A1B);  // Neutral dark background
+	@include define-color('callout-background--info', #125A75);  // Info callout (cool blue)
+	@include define-color('callout-accent--info', #70C5E9);  // Info accent
+	@include define-color('callout-background--warning', #7C4F1D);  // Warning background
+	@include define-color('callout-accent--warning', #FFC857);  // Warning accent
+	@include define-color('callout-background--error', #7D2A2E);  // Error background
+	@include define-color('callout-accent--error', #F75C5C);  // Error accent
+	@include define-color('callout-background--success', #1B5F45);  // Success background
+	@include define-color('callout-accent--success', #66D9A8);  // Success accent
+
+	// Inline Code Background
+
+	@include define-color('code-background', #1C1E26);  // Dark code block background
+	@include define-color('code-text', #FFFFFF);  // Light text for code
+	@include define-color('code-inline-background', #2B3131);  // Inline code background
+	//@include define-color('code-inline-background', #2D3735);  // Muted dark gray for code
+}
+
+
+:root {
+	@include base-theme;
+
+	&[data-theme='dark'] {
+		@include dark-theme;
+	}
+
+	&[data-theme='auto'] {
+		@media (prefers-color-scheme: dark) {
+			@include dark-theme;
+		}
+	}
+}
