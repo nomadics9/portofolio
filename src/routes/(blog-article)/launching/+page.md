@@ -3,7 +3,7 @@ slug: launching
 title: Houston Houston!
 date: 2024-12-10T22:13:25.350Z
 excerpt: Apollo
-coverImage: /images/posts/launching.webp
+coverImage: /images/posts/launching.jpeg
 tags:
   - launch
 ---
